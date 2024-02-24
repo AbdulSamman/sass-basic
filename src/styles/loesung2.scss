@@ -1,0 +1,61 @@
+//@use "variables" as var;
+@use "variables" as *;
+body {
+  background-color: #333;
+  color: #fff;
+  padding: 0 1rem;
+  font-family: sans-serif;
+  p {
+    // mit var
+    //color: var.$mainFontColor;
+    color: $mainFontColor;
+  }
+  h1 {
+    color: $headerColor;
+  }
+  h2 {
+    color: $headerColor;
+    margin-top: $headerTopMargin;
+  }
+  h3 {
+    $headerColor: rgba(255, 166, 0, 0.452);
+    color: $headerColor;
+    margin-top: $headerTopMargin;
+  }
+  .content {
+    p {
+      color: $warning;
+    }
+
+    @mixin btn($name, $bgColor, $borderColor: yellow) {
+      .#{$name} {
+        margin-right: 1rem;
+        font-size: 1.2rem;
+        background-color: $bgColor;
+        border: 2px solid $borderColor;
+        border-radius: 5px;
+        padding: 0.5rem;
+        &:hover {
+          background-color: lighten($bgColor, 20%);
+        }
+
+        &-disabled {
+          background-color: transparentize($bgColor, 0.6);
+          border: 2px solid #ccc;
+        }
+      }
+      margin-right: 1rem;
+    }
+    // @include btn(primary, lightblue);
+    // @include btn(secondary, lightgreen);
+    // @include btn(warning, orange);
+    // @include btn(error, tomato);
+
+    // oder for each
+    $buttons: primary lightblue, secondary lightgreen, warning orange,
+      error tomato, info purple;
+    @each $name, $bgColor in $buttons {
+      @include btn($name, $bgColor);
+    }
+  }
+}

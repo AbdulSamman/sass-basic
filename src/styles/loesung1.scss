@@ -1,0 +1,78 @@
+//@use "variables" as var;
+@use "variables" as *;
+body {
+  background-color: #333;
+  color: #fff;
+  padding: 0 1rem;
+  font-family: sans-serif;
+  p {
+    // mit var
+    //color: var.$mainFontColor;
+    color: $mainFontColor;
+  }
+  h1 {
+    color: $headerColor;
+  }
+  h2 {
+    color: $headerColor;
+    margin-top: $headerTopMargin;
+  }
+  h3 {
+    $headerColor: rgba(255, 166, 0, 0.452);
+    color: $headerColor;
+    margin-top: $headerTopMargin;
+  }
+  .content {
+    p {
+      color: $warning;
+    }
+    // statt das, kann man @mixin benutzen als funktion
+    // button {
+    //   margin-right: 1rem;
+    //   font-size: 1.2rem;
+    // }
+    // button.primary {
+    //   background-color: lightblue;
+    // }
+    // button.secondary {
+    //   background-color: lightgreen;
+    // }
+    // button.warning {
+    //   background-color: orange;
+    // }
+    // button.error {
+    //   background-color: tomato;
+    // }
+    @mixin btn($bgColor, $borderColor: #e32980) {
+      margin-right: 1rem;
+      font-size: 1.2rem;
+      background-color: $bgColor;
+      //  border: 2px solid blue;
+      border: 2px solid $borderColor;
+      border-radius: 5px;
+      padding: 0.5rem;
+      &:hover {
+        // filter: brightness(0.5);
+        // background-color: darken($bgColor, 20%);
+        background-color: lighten($bgColor, 20%);
+      }
+      //für buttons-disabled
+      &-disabled {
+        background-color: transparentize($bgColor, 0.6);
+        border: 2px solid #ccc;
+      }
+    }
+    button.primary {
+      @include btn(lightblue);
+    }
+    button.secondary {
+      @include btn(lightgreen);
+    }
+    button.warning {
+      @include btn(orange);
+    }
+    button.error {
+      @include btn(tomato);
+    }
+  }
+}
