@@ -57,5 +57,29 @@ body {
     @each $name, $bgColor in $buttons {
       @include btn($name, $bgColor);
     }
+
+    //überschrifte lists
+    $hSizes: 4rem, 3.5rem, 3rem, 2.5rem, 2rem, 1.5rem;
+    $hColors: blue, red, green, purple, yellow, gray;
+    //mit if/else
+    $wrapped: nowrap, wrap, nowrap, wrap, nowrap, nowrap;
+
+    @for $i from 1 through length($hSizes) {
+      h#{$i}.special {
+        font-size: nth($hSizes, $i);
+        color: nth($hColors, $i);
+        @if nth($wrapped, $i) == "nowrap" {
+          color: cyan;
+        }
+        @if nth($wrapped, $i) == "wrap" {
+          &::after {
+            content: ")";
+          }
+          &::before {
+            content: "(";
+          }
+        }
+      }
+    }
   }
 }
