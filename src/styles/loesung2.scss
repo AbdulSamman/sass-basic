@@ -27,7 +27,7 @@ body {
       color: $warning;
     }
 
-    @mixin btn($name, $bgColor, $borderColor: yellow) {
+    @mixin btn($name, $bgColor, $borderColor: #ccc) {
       .#{$name} {
         margin-right: 1rem;
         font-size: 1.2rem;

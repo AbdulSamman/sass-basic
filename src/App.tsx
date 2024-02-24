@@ -1,6 +1,10 @@
 //import "./styles/loesung1.scss";
 import "./styles/loesung2.scss";
+import { useState } from "react";
+import { ButtonDis } from "./components/ButtonsDis";
+
 function App() {
+  const [showToggle, setShowToggle] = useState(false);
   return (
     <div className="App">
       <div>
@@ -17,17 +21,31 @@ function App() {
           delectus
         </p>
         <hr />
-        <button className="primary">Primary</button>
-        <button className="secondary">Secondary</button>
-        <button className="warning">Warning</button>
-        <button className="error">Error</button>
-        <button className="info">info</button>
-        <br />
-        <button className="primary primary-disabled">Primary</button>
-        <button className="secondary secondary-disabled">Secondary</button>
-        <button className="warning warning-disabled">Warning</button>
-        <button className="error error-disabled">Error</button>
-        <button className="info info-disabled">Info</button>
+        <p>{showToggle ? "Currently disabled" : "Currently enabled"}</p>
+        <button
+          className="showToggle"
+          onClick={() => setShowToggle(!showToggle)}>
+          {!showToggle ? <>Toggle Disabled</> : <>Toggle Enable</>}
+        </button>
+        <hr />
+        {!showToggle && (
+          <>
+            <button className="primary">Primary</button>
+            <button className="secondary">Secondary</button>
+            <button className="warning">Warning</button>
+            <button className="error">Error</button>
+            <button className="info">info</button>
+            <br />
+            <button className="primary primary-disabled">Primary</button>
+            <button className="secondary secondary-disabled">Secondary</button>
+            <button className="warning warning-disabled">Warning</button>
+            <button className="error error-disabled">Error</button>
+            <button className="info info-disabled">Info</button>
+            <hr />
+          </>
+        )}
+
+        <ButtonDis />
         <hr />
         <h1 className="special">The H1</h1>
         <h2 className="special">The H2</h2>
