@@ -23,7 +23,7 @@ body {
     margin-top: $headerTopMargin;
   }
   .content {
-    p {
+    span {
       color: $warning;
     }
     // statt das, kann man @mixin benutzen als funktion

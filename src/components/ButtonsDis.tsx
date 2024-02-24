@@ -2,13 +2,13 @@ import { useState } from "react";
 
 export const ButtonDis = () => {
   const [isDisabled, setIsDisabled] = useState(false);
-  console.log(isDisabled);
 
   return (
     <div>
       <button onClick={() => setIsDisabled(!isDisabled)}>
         {isDisabled ? "Enabled" : "Disabled"}
       </button>
+
       <hr />
       <button className={isDisabled ? "primary  primary-disabled" : "primary"}>
         Primary

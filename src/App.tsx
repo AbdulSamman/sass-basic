@@ -5,27 +5,37 @@ import { ButtonDis } from "./components/ButtonsDis";
 
 function App() {
   const [showToggle, setShowToggle] = useState(false);
+  const [showAsError, setShowAsError] = useState(false);
   return (
     <div className="App">
       <div>
         <h1>Info Site</h1>
-        <p>Welcome to thsi site.</p>
+        <p>Welcome to this site.</p>
         <h2>Detailed Info</h2>
-        <p>Welcome to thsi site.</p>
+        <p>Welcome to this site.</p>
         <h3>More Info</h3>
-        <p>Welcome to thsi site.</p>
+        <p>Welcome to this site.</p>
       </div>
       <section className="content">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-          delectus
-        </p>
+        <span
+          style={{
+            backgroundColor: showAsError ? "tomato" : "",
+            color: showAsError ? "red" : "white",
+          }}>
+          This is the message in the content.
+        </span>
         <hr />
-        <p>{showToggle ? "Currently disabled" : "Currently enabled"}</p>
+        <p style={showToggle ? { color: "red" } : { color: "green" }}>
+          {showToggle ? "Currently disabled" : "Currently enabled"}
+        </p>
         <button
           className="showToggle"
+          style={{ marginRight: "1rem" }}
           onClick={() => setShowToggle(!showToggle)}>
           {!showToggle ? <>Toggle Disabled</> : <>Toggle Enable</>}
+        </button>
+        <button onClick={() => setShowAsError(!showAsError)}>
+          Show As Error
         </button>
         <hr />
         {!showToggle && (
