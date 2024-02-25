@@ -35,7 +35,7 @@ function App() {
         <button onClick={handleChangeSize}>
           Size:
           <span style={{ color: "red" }}>
-            {changeSize < 16 ? `${1 + changeSize / 10}rem` : `max`}
+            {changeSize < 15 ? `${1 + changeSize / 10}rem` : `max`}
           </span>
         </button>
         <p>Welcome to this site.</p>
