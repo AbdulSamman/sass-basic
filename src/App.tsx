@@ -6,6 +6,16 @@ import { ButtonDis } from "./components/ButtonsDis";
 function App() {
   const [showToggle, setShowToggle] = useState(false);
   const [showAsError, setShowAsError] = useState(false);
+  const [changeSize, setChangeSize] = useState(0);
+
+  const handleChangeSize = () => {
+    const _changeSize = changeSize + 1;
+    if (_changeSize === 15) {
+      setChangeSize(1);
+    }
+    setChangeSize(_changeSize);
+  };
+
   return (
     <div className="App">
       <div>
@@ -14,6 +24,20 @@ function App() {
         <h2>Detailed Info</h2>
         <p>Welcome to this site.</p>
         <h3>More Info</h3>
+        <h4
+          style={{
+            fontSize:
+              changeSize < 16 ? `${1 + changeSize / 10}rem` : `${2.5}rem`,
+            color: changeSize < 5 ? "blue" : "red",
+          }}>
+          The size of this text can be adjusted.
+        </h4>
+        <button onClick={handleChangeSize}>
+          Size:
+          <span style={{ color: "red" }}>
+            {changeSize < 16 ? `${1 + changeSize / 10}rem` : `max`}
+          </span>
+        </button>
         <p>Welcome to this site.</p>
       </div>
       <section className="content">
